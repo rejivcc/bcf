@@ -101,6 +101,30 @@
     border-bottom:1px solid var(--line);
   }
   .rings{
+  position:absolute; right:-140px; top:50%; transform:translateY(-50%);
+  width:520px; height:520px; opacity:0.9;
+}
+.rings circle{
+  fill:none; stroke:var(--sage); stroke-width:1;
+  opacity:0;
+  animation:ringIn 1.4s ease forwards, ringDrift 40s linear infinite;
+  transform-origin:center;
+}
+.rings circle:nth-child(2){stroke:var(--gold); animation-delay:.15s, 0s;}
+.rings circle:nth-child(3){animation-delay:.3s, 0s; animation-direction:normal, reverse;}
+.rings circle:nth-child(4){stroke:var(--gold); animation-delay:.45s, 0s; opacity:.5;}
+@keyframes ringIn{
+  from{opacity:0; transform:scale(0.85);}
+  to{opacity:1; transform:scale(1);}
+}
+@keyframes ringDrift{
+  from{transform:rotate(0deg) scale(1);}
+  to{transform:rotate(360deg) scale(1);}
+}
+@media (prefers-reduced-motion: reduce){
+  .rings circle{animation:ringIn 1.4s ease forwards;}
+}
+  /* .rings{
     position:absolute; right:-140px; top:50%; transform:translateY(-50%);
     width:520px; height:520px; opacity:0.9;
   }
@@ -115,7 +139,7 @@
   @keyframes ringIn{
     from{opacity:0; transform:scale(0.85);}
     to{opacity:1; transform:scale(1);}
-  }
+  } */
   .hero-inner{
     position:relative; z-index:2;
     max-width:640px;
